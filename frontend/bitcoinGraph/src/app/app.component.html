@@ -1,0 +1,39 @@
+
+
+<div class="container">
+  <div class="align-self-center" style="background-color: #f33333">
+    <p class="text-uppercase text-center"><b>Bitcoin Price Per Day</b></p>
+  </div>
+  <div>
+  <form [formGroup]="formRangeDate" (ngSubmit)="submit()">
+  <div class="row">
+  
+   <div class="col-sm">
+      <!-- Start date datepicker in the popup -->
+    <label for="startDate"><b>Start date: </b> </label>
+    <input type="text" id="startDate" formControlName="startDate" ngbDatepicker #d1="ngbDatepicker" readonly
+    [(ngModel)]="modelStartDate" name="modelStartDate" [maxDate]="maxDateBitcoin" (focus)="d1.open()" (dblclick)="d1.close()" (dateSelect)="d1.close()" 
+    (ngModelChange)="submit()" />
+   </div>
+
+   <div class="col-sm">
+    <!-- End date datepicker in the popup -->
+    <label for="endDate"><b>End date: </b></label>
+   <input type="text" id="endDate" formControlName="endDate" ngbDatepicker #d2="ngbDatepicker" readonly
+   [(ngModel)]="modelEndDate" name="modelEndDate" [maxDate]="maxDateBitcoin"
+   (focus)="d2.open()" (dblclick)="d2.close()" (dateSelect)="d2.close()"
+   (ngModelChange)="submit()" />
+  </div>
+
+  <div class="col-sm">
+  <button class="btn btn-primary" type="submit">Render</button>
+  </div>
+
+  </div>
+  </form>
+</div>
+
+</div>
+<div *ngIf = "showChartBitcoin" >
+  <app-chart-day-price></app-chart-day-price> 
+</div>
